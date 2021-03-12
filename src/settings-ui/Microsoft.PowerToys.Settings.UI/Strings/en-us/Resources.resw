@@ -452,6 +452,10 @@
     <value>Enable SVG (.svg) preview</value>
     <comment>Do you want this feature on / off</comment>
   </data>
+  <data name="FileExplorerPreview_ToggleSwitch_Preview_IPYNB.Header" xml:space="preserve">
+    <value>Enable Jupyter Notebook (.ipynb) preview</value>
+    <comment>Do not loc "Jypyter Notebook".  Do you want this feature on / off</comment>
+  </data>
   <data name="FileExplorerPreview_ToggleSwitch_SVG_Thumbnail.Header" xml:space="preserve">
     <value>Enable SVG (.svg) thumbnails</value>
     <comment>Do you want this feature on / off</comment>

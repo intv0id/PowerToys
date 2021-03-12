@@ -63,6 +63,23 @@ namespace Microsoft.PowerToys.Settings.UI.Library
             }
         }
 
+        private bool enableIpynbPreview = true;
+
+        [JsonPropertyName("ipynb-previewer-toggle-setting")]
+        [JsonConverter(typeof(BoolPropertyJsonConverter))]
+        public bool EnableIpynbPreview
+        {
+            get => enableIpynbPreview;
+            set
+            {
+                if (value != enableIpynbPreview)
+                {
+                    LogTelemetryEvent(value);
+                    enableIpynbPreview = value;
+                }
+            }
+        }
+
         public PowerPreviewProperties()
         {
         }

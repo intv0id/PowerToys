@@ -72,6 +72,14 @@
          </uap3:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
+           <uap3:FileTypeAssociation Name="ipynbpreviewhandler" desktop2:AllowSilentDefaultTakeOver="true">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.ipynb</uap:FileType>
+            </uap:SupportedFileTypes>
+            <desktop2:DesktopPreviewHandler Clsid="8843FD3B-1F8A-4F6F-907D-CEDC4A543072"/>
+         </uap3:FileTypeAssociation>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileTypeAssociation">
           <uap3:FileTypeAssociation Name="svgpreviewhandler" desktop2:AllowSilentDefaultTakeOver="true">
             <uap:SupportedFileTypes>
               <uap:FileType>.svg</uap:FileType>
@@ -84,6 +92,7 @@
             <com:SurrogateServer DisplayName="Preview Handler" AppId="E39A92FE-D89A-417B-9B9D-F0B6BD564B36" SystemSurrogate="PreviewHost">
               <com:Class Id="74619BDA-A66B-451D-864C-A7726F5FE650" Path="modules\powerpreview.dll" ThreadingModel="Both"/>
               <com:Class Id="E0907A95-6F9A-4D1B-A97A-7D9D2648881E" Path="modules\powerpreview.dll" ThreadingModel="Both"/>
+              <com:Class Id="8843FD3B-1F8A-4F6F-907D-CEDC4A543072" Path="modules\powerpreview.dll" ThreadingModel="Both"/>
             </com:SurrogateServer>
           </com:ComServer>
         </com:Extension>
