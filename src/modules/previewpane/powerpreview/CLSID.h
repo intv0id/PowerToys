@@ -22,6 +22,12 @@ const CLSID CLSID_SHIMActivatePdfPreviewHandler = { 0x4f6d533b, 0x4185, 0x43a6, 
 // 07665729-6243-4746-95b7-79579308d1b2
 const CLSID CLSID_PdfPreviewHandler = { 0x07665729, 0x6243, 0x4746, { 0x95, 0xb7, 0x79, 0x57, 0x93, 0x08, 0xd1, 0xb2 } };
 
+// 8843FD3B-1F8A-4F6F-907D-CEDC4A543072
+const CLSID CLSID_SHIMActivateIpynbPreviewHandler = { 0x8843FD3B, 0x1F8A, 0x4F6F, { 0x90, 0x7D, 0xCE, 0xDC, 0x4A, 0x54, 0x30, 0x72 } };
+
+// 465f84b1-5910-4611-b79a-2577c309e9bb
+const CLSID CLSID_IpynbPreviewHandler = { 0x465f84b1, 0x5910, 0x4611, { 0xb7, 0x9a, 0x25, 0x77, 0xc3, 0x09, 0xe9, 0xbb } };
+
 // 9C723B8C-4F5C-4147-9DE4-C2808F9AF66B
 const CLSID CLSID_SHIMActivateSvgThumbnailProvider = { 0x9C723B8C, 0x4F5C, 0x4147, { 0x9D, 0xE4, 0xC2, 0x80, 0x8F, 0x9A, 0xF6, 0x6B } };
 
@@ -35,6 +41,7 @@ const GUID CLSID_PdfThumbnailProvider = { 0xbcc13d15, 0x9720, 0x4cc4, { 0x83, 0x
 const std::vector<std::pair<CLSID, CLSID>> NativeToManagedClsid({ 
     { CLSID_SHIMActivateMdPreviewHandler, CLSID_MdPreviewHandler },
     { CLSID_SHIMActivatePdfPreviewHandler, CLSID_PdfPreviewHandler },
+    { CLSID_SHIMActivateIpynbPreviewHandler, CLSID_IpynbPreviewHandler },
     { CLSID_SHIMActivateSvgPreviewHandler, CLSID_SvgPreviewHandler },
     { CLSID_SHIMActivateSvgThumbnailProvider, CLSID_SvgThumbnailProvider }
 });

@@ -51,11 +51,13 @@ namespace Microsoft.PowerToys.Settings.UI.Library.ViewModels
             _mdRenderIsEnabled = Settings.Properties.EnableMdPreview;
             _pdfRenderIsEnabled = Settings.Properties.EnablePdfPreview;
             _pdfThumbnailIsEnabled = Settings.Properties.EnablePdfThumbnail;
+            _ipynbRenderIsEnabled = Settings.Properties.EnableIpynbPreview;
         }
 
         private bool _svgRenderIsEnabled;
         private bool _mdRenderIsEnabled;
         private bool _pdfRenderIsEnabled;
+        private bool _ipynbRenderIsEnabled;
         private bool _svgThumbnailIsEnabled;
         private bool _pdfThumbnailIsEnabled;
 
@@ -126,6 +128,24 @@ namespace Microsoft.PowerToys.Settings.UI.Library.ViewModels
                 {
                     _pdfRenderIsEnabled = value;
                     Settings.Properties.EnablePdfPreview = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public bool IPYNBRenderIsEnabled
+        {
+            get
+            {
+                return _ipynbRenderIsEnabled;
+            }
+
+            set
+            {
+                if (value != _ipynbRenderIsEnabled)
+                {
+                    _ipynbRenderIsEnabled = value;
+                    Settings.Properties.EnableIpynbPreview = value;
                     RaisePropertyChanged();
                 }
             }

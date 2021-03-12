@@ -41,6 +41,14 @@ PowerPreviewModule::PowerPreviewModule() :
         L"PDF Preview Handler",
         std::make_unique<RegistryWrapper>()));
 
+    m_fileExplorerModules.emplace_back(std::make_unique<PreviewHandlerSettings>(
+        true,
+        L"ipynb-previewer-toggle-setting",
+        GET_RESOURCE_STRING(IDS_PREVPANE_IPYNB_SETTINGS_DESCRIPTION),
+        L"{465f84b1-5910-4611-b79a-2577c309e9bb}",
+        L"Jupyter Notebook Preview Handler",
+        std::make_unique<RegistryWrapper>()));
+
     m_fileExplorerModules.emplace_back(std::make_unique<ThumbnailProviderSettings>(
         true,
         L"svg-thumbnail-toggle-setting",

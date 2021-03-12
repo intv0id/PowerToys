@@ -532,6 +532,19 @@
           <RegistryValue Type="string" Key="InprocServer32\$(var.Version).0" Name="Assembly" Value="PdfPreviewHandler, Version=$(var.Version).0, Culture=neutral" />
           <RegistryValue Type="string" Key="InprocServer32\$(var.Version).0" Name="Class" Value="Microsoft.PowerToys.PreviewHandler.Pdf.PdfPreviewHandler" />
         </RegistryKey>
+        <!-- Registry Key for Class Registration of Jupyter Notebook Preview Handler -->
+        <RegistryKey Root="HKCR" Key="CLSID\{465f84b1-5910-4611-b79a-2577c309e9bb}">
+          <RegistryValue Type="string" Value="Microsoft.PowerToys.PreviewHandler.JupyterNotebook.JupyterNotebookPreviewHandler" />
+          <RegistryValue Type="string" Name="DisplayName" Value="JupyterNotebook Preview Handler" />
+          <RegistryValue Type="string" Name="AppID" Value="{CF142243-F059-45AF-8842-DBBE9783DB14}" />
+          <RegistryValue Type="string" Key="Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" />
+          <RegistryValue Type="string" Key="InprocServer32" Value="[FileExplorerPreviewInstallFolder]JupyterNotebookPreviewHandler.comhost.dll" />
+          <RegistryValue Type="string" Key="InprocServer32" Name="Assembly" Value="JupyterNotebookPreviewHandler, Version=$(var.Version).0, Culture=neutral" />
+          <RegistryValue Type="string" Key="InprocServer32" Name="Class" Value="Microsoft.PowerToys.PreviewHandler.JupyterNotebook.JupyterNotebookPreviewHandler" />
+          <RegistryValue Type="string" Key="InprocServer32" Name="ThreadingModel" Value="Both" />
+          <RegistryValue Type="string" Key="InprocServer32\$(var.Version).0" Name="Assembly" Value="JupyterNotebookPreviewHandler, Version=$(var.Version).0, Culture=neutral" />
+          <RegistryValue Type="string" Key="InprocServer32\$(var.Version).0" Name="Class" Value="Microsoft.PowerToys.PreviewHandler.JupyterNotebook.JupyterNotebookPreviewHandler" />
+        </RegistryKey>
         <!-- Registry Key for Class Registration of Pdf Thumbnail Provider -->
         <RegistryKey Root="HKCR" Key="CLSID\{BCC13D15-9720-4CC4-8371-EA74A274741E}">
           <RegistryValue Type="string" Value="Microsoft.PowerToys.ThumbnailHandler.Pdf.PdfThumbnailProvider" />
@@ -561,6 +574,10 @@
         <RegistryKey Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\PreviewHandlers">
           <RegistryValue Type="string" Name="{07665729-6243-4746-95b7-79579308d1b2}" Value="Pdf Preview Handler" />
         </RegistryKey>
+        <!-- Add Jupyter notebook preview handler to preview handlers list -->
+        <RegistryKey Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\PreviewHandlers">
+          <RegistryValue Type="string" Name="{465f84b1-5910-4611-b79a-2577c309e9bb}" Value="Jupyter Notebook Preview Handler" />
+        </RegistryKey>
         <!-- Add file type association for Svg Preview Handler -->
         <RegistryKey Root="HKCR" Key=".svg\shellex">
           <RegistryValue Type="string" Key="{8895b1c6-b41f-4c1c-a562-0d564250836f}" Value="{ddee2b8a-6807-48a6-bb20-2338174ff779}" />
@@ -576,6 +593,10 @@
         <!-- Add file type association for Pdf Preview Handler -->
         <RegistryKey Root="HKCR" Key=".pdf\shellex">
           <RegistryValue Type="string" Key="{8895b1c6-b41f-4c1c-a562-0d564250836f}" Value="{07665729-6243-4746-95b7-79579308d1b2}" />
+        </RegistryKey>
+        <!-- Add file type association for Jupyter Notebook Preview Handler -->
+        <RegistryKey Root="HKCR" Key=".ipynb\shellex">
+          <RegistryValue Type="string" Key="{8895b1c6-b41f-4c1c-a562-0d564250836f}" Value="{465f84b1-5910-4611-b79a-2577c309e9bb}" />
         </RegistryKey>
         <!-- Add file type association for Pdf Thumbnail Provider -->
         <RegistryKey Root="HKCR" Key=".pdf\shellex">
@@ -839,8 +860,13 @@
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\MarkdownPreviewHandler.comhost.dll" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\MarkdownPreviewHandler.runtimeconfig.json" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\MarkdownPreviewHandler.deps.json" />
-        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\Markdig.Signed.dll" />
-        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\HtmlAgilityPack.dll" />
+        <!-- Files to include dll's for Jupyter Notebook Preview Handler and it's dependencies -->
+        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.dll" />
+        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.comhost.dll" />
+        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.runtimeconfig.json" />
+        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.deps.json" />
+		<File Source="$(var.BinX64Dir)modules\FileExplorerPreview\Markdig.Signed.dll" />
+		<File Source="$(var.BinX64Dir)modules\FileExplorerPreview\HtmlAgilityPack.dll" />
         <File Id="FileExplorerPreview_System.IO.Abstractions.dll" Source="$(var.BinX64Dir)modules\FileExplorerPreview\System.IO.Abstractions.dll" />
         <!-- File to include dll for Pdf Preview Handler -->
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\PdfPreviewHandler.dll" />
@@ -1088,6 +1114,9 @@
                 </Component>
                 <Component Id="MarkdownPreviewHandler_$(var.IdSafeLanguage)_Component" Directory="Resource$(var.IdSafeLanguage)FileExplorerPreviewInstallFolder">
                     <File Id="MarkdownPreviewHandler_$(var.IdSafeLanguage)_File" Source="$(var.BinX64Dir)modules\FileExplorerPreview\$(var.Language)\MarkdownPreviewHandler.resources.dll" />
+                </Component>
+                <Component Id="JupyterNotebookPreviewHandler_$(var.IdSafeLanguage)_Component" Directory="Resource$(var.IdSafeLanguage)FileExplorerPreviewInstallFolder">
+                    <File Id="JupyterNotebookPreviewHandler_$(var.IdSafeLanguage)_File" Source="$(var.BinX64Dir)modules\FileExplorerPreview\$(var.Language)\JupyterNotebookPreviewHandler.resources.dll" />
                 </Component>
                 <Component Id="SVGPreviewHandler_$(var.IdSafeLanguage)_Component" Directory="Resource$(var.IdSafeLanguage)FileExplorerPreviewInstallFolder">
                   <File Id="SVGPreviewHandler_$(var.IdSafeLanguage)_File" Source="$(var.BinX64Dir)modules\FileExplorerPreview\$(var.Language)\SvgPreviewHandler.resources.dll" />
