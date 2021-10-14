@@ -864,7 +864,6 @@
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.dll" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.comhost.dll" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\Jupyscope.dll" />
-        <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\Jupyscope.Views.dll" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\Dahomey.Json.dll" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.runtimeconfig.json" />
         <File Source="$(var.BinX64Dir)modules\FileExplorerPreview\JupyterNotebookPreviewHandler.deps.json" />
