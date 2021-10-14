@@ -64,6 +64,8 @@ namespace Microsoft.PowerToys.PreviewHandler.JupyterNotebook
         /// <param name="dataSource">Path to the file.</param>
         public override void DoPreview<T>(T dataSource)
         {
+            _infoBarDisplayed = false;
+
             try
             {
                 if (!(dataSource is string filePath))
@@ -79,7 +81,7 @@ namespace Microsoft.PowerToys.PreviewHandler.JupyterNotebook
                 }
 
                 var notebook = TelescopeConverter.Deserialize<Notebook>(fileText);
-                var notebookContentHTML = notebook.ToHtml().Result;
+                var notebookContentHTML = notebook.ToHtml().GetAwaiter().GetResult();
                 var notebookHTML = $"{htmlHeader}{notebookContentHTML}{htmlFooter}";
 
                 InvokeOnControlThread(() =>
